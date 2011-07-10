@@ -1,15 +1,15 @@
 (ns couch-shouter.views.layout
-  (:use [hiccup.core :only [html]
-         [hiccup.page-helpers :only [doctype include-css]]]))
+  (:use [hiccup.core :only [html]]
+        [hiccup.page-helpers :only [doctype include-css]]))
 
 (defn common [title & body]
   (html
-   (dotype :html5)
+   (doctype :html5)
    [:head
     [:meta {:charset "utf-8"}]
     [:meta {:http-equiv "X-UA-Compatible" :content "IE=edge,chrome=1"}]
     [:meta {:name "viewport" :content "width=device-width, initial-scale=1,maximum-scale=1"}]
-    [:title titl]
+    [:title title]
     (include-css "/stylesheets/base.css"
                  "/stylesheets/skeleton.css"
                  "/stylesheets/screen.css")
