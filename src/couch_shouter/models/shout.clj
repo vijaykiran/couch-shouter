@@ -6,4 +6,6 @@
   (clutch/with-db (db)
     (clutch/get-all-documents-meta {:include_docs true})))
 
-(defn create [])
+(defn create [params]
+  (clutch/with-db (db)
+    (clutch/create-document {:data params})))

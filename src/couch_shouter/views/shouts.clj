@@ -5,20 +5,23 @@
   (:require [couch-shouter.views.layout :as layout]))
 
 (defn shout-form []
-  [:div {:id "shout-form" :class "sixteen columns alpha omega"}
+  [:div {:id "shout-form" }
    (form-to [:post "/"]
             (label "shout" "What do you want to SHOUT?")
+            [:br]
             (text-area "shout")
+            [:br]
             (submit-button "SHOUT!"))])
 
 (defn display-shouts [shouts]
-   [:div {:id "shouts sixteen columns alpha omega"}
-    (map
-     (fn [shout] (:data (:doc shout)))
-     (:rows shouts))])
+   [:div {:id "shouts"}
+    [:ul
+     (map
+      (fn [shout] [:li (:data (:doc shout))])
+      (:rows shouts))]])
 
 (defn index [shouts]
   (layout/common "COUCH SHOUTER"
                  (shout-form)
-                 [:div {:class "clear"}]
+                 [:br]
                  (display-shouts shouts)))
