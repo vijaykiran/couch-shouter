@@ -4,7 +4,7 @@
   (:import (java.net URI)))
 
 (defn database-resource []
-  (let [url (URI. (System/getenv "CLOUDANT_URL"))
+  (let [url (URI. "http://127.0.0.1:5984/_utils/")
         host (.getHost url)
         port (if (pos? (.getPort url)) (.getPort url) 443)]
     (merge

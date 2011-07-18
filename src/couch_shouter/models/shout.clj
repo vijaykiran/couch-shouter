@@ -4,9 +4,6 @@
 
 (defn all []
   (clutch/with-db (db)
-    (->> (clutch/get-all-documents-meta)
-         :rows
-         (map :id :data))))
+    (clutch/get-all-documents-meta {:include_docs true})))
 
-(defn create []
-  )
+(defn create [])

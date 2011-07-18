@@ -12,13 +12,13 @@
             (submit-button "SHOUT!"))])
 
 (defn display-shouts [shouts]
-  [:div {:id "shouts sixteen columns alpha omega"}
-   (map
-    (fn [shout] [:h2 {:class "shout"} (h (:body shout))])
-    shouts)])
+   [:div {:id "shouts sixteen columns alpha omega"}
+    (map
+     (fn [shout] (:data (:doc shout)))
+     (:rows shouts))])
 
 (defn index [shouts]
   (layout/common "COUCH SHOUTER"
                  (shout-form)
                  [:div {:class "clear"}]
-                 ()))
+                 (display-shouts shouts)))
